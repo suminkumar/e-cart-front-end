@@ -1,0 +1,43 @@
+<!-- empty wishlist -->
+<div *ngIf="wishlistItems.length==0" class="container mt-5">
+    <div class="row mt-5">
+        <div class="col text-center">
+            <img style="width: 400px; height: 350px;" src="https://cdn.dribbble.com/users/2046015/screenshots/4591856/first_white_girl_drbl.gif" alt="wishlist gif">
+            <h3>Your whishlist is empty...</h3>
+            <a class="btn btn-success" routerLink="">Add More</a>
+        </div>
+    </div>
+</div>
+
+<!-- wishlist Section-->
+<section class="py-5">
+    <div *ngIf="wishlistItems.length!=0" class="container px-4 px-lg-5 mt-5">
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+            <div class="col mb-5" *ngFor="let product of wishlistItems">
+                <div class="card h-100">
+                    <!-- Product image-->
+                    <img height="200px" class="card-img-top" [src]=product.image [alt]=product.title />
+                    <!-- Product details-->
+                    <div class="card-body p-4">
+                        <div class="text-center">
+                            <!-- Product name-->
+                            <h5 class="fw-bolder">{{product.title.slice(0,20)}}</h5>
+                            <!-- Product price-->
+                            <p class="fw-bolder">${{product.price}}</p>
+                        </div>
+                    </div>
+                <!-- Product actions-->
+                <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                    <div class="text-center d-flex justify-content-evenly">
+                        <!-- remove item from wihslist -->
+                        <button (click)="removeWishlistItem(product.id)" class="btn btn-danger mt-auto" ><i class="fa-solid fa-heart-circle-minus "></i></button>
+                    <!-- add to cart -->
+                    <button (click)="addtocart(product)" class="btn btn-success text-white"><i class="fa-solid fa-cart-plus fa-1x"></i></button>
+                    </div>
+                </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</section>

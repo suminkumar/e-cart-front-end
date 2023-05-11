@@ -1,0 +1,42 @@
+  <!-- Header-->
+  <header class=" py-5">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="text-center text-danger">
+            <img style="width: 80%; height: 500px;  "  src="https://561websitedesign.com/wp-content/uploads/2016/08/e-commerce2.png" alt="">
+            <h1 class="display-4 fw-bolder mt-2">Shop in style</h1>
+            <p class="lead fw-normal text-red-50 mb-0">Enjoy Shopping With E-Cart</p>
+        </div>
+    </div>
+</header>
+<!-- Section-->
+<section class="py-5">
+    <div class="container px-4 px-lg-5 mt-5">
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+            <div class="col mb-5" *ngFor="let product of allProducts | filter:searchkey:'title'">
+                <div class="card h-100 p-4">
+                    <!-- Product image-->
+                    <img height="220px" class="card-img-top" [src]=product.image [alt]=product.title />
+                    <!-- Product details-->
+                    <div class="card-body p-4">
+                        <div class="text-center">
+                            <!-- Product name-->
+                            <h5 class="fw-bolder">{{product.title.slice(0,20)}}...</h5>
+                            <!-- Product price-->
+                           <p class="fw-bolder">${{product.price}}</p>
+                        </div>
+                    </div>
+                    <!-- Product actions-->
+                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                        <div class="text-center d-flex justify-content-evenly">
+                            <!-- view -->
+                            <a class="btn btn-outline-success mt-auto" routerLink="view/{{product.id}}"><i class="fa-solid fa-eye fa-1x"></i></a>
+                        <!-- add to cart -->
+                        <button (click)="addtocart(product)" class="btn btn-warning text-dark"><i class="fa-solid fa-cart-plus fa-1x"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</section>
